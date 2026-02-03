@@ -1,8 +1,15 @@
+# [[ -r ~/.config/zsh/znap ]] ||
+#     git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/.config/zsh/znap
+
+# source ~/.config/zsh/znap/znap.zsh
+
 # load NVM
 export NVM_DIR="$HOME/.nvm"
 export NVM_SYMLINK_CURRENT=true
-export NVM_AUTO_USE=true 
+export NVM_AUTO_USE=true
 export NVM_LAZY_LOAD=true
+# zsh-nvm is too slow
+# znap source lukechilds/zsh-nvm
 
 # ripgrep config
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
