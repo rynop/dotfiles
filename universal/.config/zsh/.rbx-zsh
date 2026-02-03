@@ -1,8 +1,8 @@
-RBLX_NAME=aciarlillo
+RBLX_NAME=rpendergast
 local rbx_base_dir="$HOME/GitHub/roblox"
 
 # Roblox WebApps specific locations
-RBLX_WEB_APPS_DIR="$HOME/GitHub/roblox/web-frontend/project/WebApps"
+RBLX_WEB_APPS_DIR="$rbx_base_dir/web-frontend/project/WebApps"
 RBLX_WEB_APPS_JEST_CONFIG="$RBLX_WEB_APPS_DIR/Roblox.App.Configuration/jest/jest-test.config.js"
 
 rpr() {
@@ -150,7 +150,7 @@ _rbx() {
 }
 
 # Register the completion
-compdef _rbx rbx
+# compdef _rbx rbx
 
 # This will run jest from the top level WebApps directory, but
 # convert any relative paths to absolute paths based on the current directory 

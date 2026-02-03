@@ -1,38 +1,60 @@
 [user]
-	name = Alex Ciarlillo
-	email = alex.ciarlillo@gmail.com
-
-[push]
-	default = current
-
-[mergetool]
-	keepBackup = false
-
+	name = Ryan Pendergast
+	email = ryan.pendergast@gmail.com
 [core]
-	excludesfile = /Users/alex/.gitignore_global
-	precomposeUnicode = true
-
+	editor = nano
+	excludesfile = ~/.gitignore
 [alias]
-    ca = commit --amend --reuse-message=HEAD
-    # adapted from https://github.com/not-an-aardvark/git-delete-squashed
-    delete-squashed = "!f() { local targetBranch=${1:-master} && git checkout -q $targetBranch && git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base $targetBranch $branch) && [[ $(git cherry $targetBranch $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && git branch -D $branch; done; }; f"
-    echo-squashed = "!f() { local targetBranch=${1:-master} && git checkout -q $targetBranch && git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d && git for-each-ref refs/heads/ \"--format=%(refname:short)\" | while read branch; do mergeBase=$(git merge-base $targetBranch $branch) && [[ $(git cherry $targetBranch $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == \"-\"* ]] && echo git branch -D $branch; done; }; f"
-
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+[pretty]
+	userdate = "%C(auto)%h %<(12)%ar %C(blue)%<(15)%aN%C(reset)%C(auto) %d %s"
+[format]
+	pretty = userdate
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
 [credential]
 	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
-[maintenance]
-	repo = /Users/alex/.config/zsh/znap
-	repo = /Users/alex/.config/zsh/lukechilds/zsh-nvm
-	repo = /Users/alex/.config/zsh/ohmyzsh/ohmyzsh
-	repo = /Users/alex/.config/zsh/zsh-users/zsh-autosuggestions
-	repo = /Users/alex/.config/zsh/zsh-users/zsh-syntax-highlighting
+
+# From https://blog.gitbutler.com/how-git-core-devs-configure-git/
+[column]
+        ui = auto
+[branch]
+        sort = -committerdate
+[tag]
+        sort = version:refname
+[diff]
+        algorithm = histogram
+        colorMoved = plain
+        mnemonicPrefix = true
+        renames = true
+[fetch]
+        prune = true
+        pruneTags = true
+        all = true
+
+[help]
+        autocorrect = prompt
+[commit]
+        verbose = true
+[rerere]
+        enabled = true
+        autoupdate = true
+[rebase]
+        autoSquash = true
+        autoStash = true
+        updateRefs = true
+

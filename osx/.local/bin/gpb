@@ -1,0 +1,12 @@
+#!/bin/bash
+# gpb - "git pull branch"
+# get freshest from master, create a feature branch
+# usage: gpb tourney-invite-embed
+
+set -euo pipefail
+
+YOUR_NAME="rpendergast"
+
+git checkout master
+git pull
+git checkout -b "$YOUR_NAME/$1"
